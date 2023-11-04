@@ -26,6 +26,10 @@ public static class InputManager
         {
             _mousePos = ctx.ReadValue<Vector2>();
         };
+        _ctrls.InGame.Reload.performed += _ =>
+        {
+            p.reload();
+        };
     }
 
     public static void EnableInGame()

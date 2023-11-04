@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
 public class Player : MonoBehaviour
 {
@@ -20,5 +22,9 @@ public class Player : MonoBehaviour
         if (weaponShootToggle) myWeapon.startShooting();
         else myWeapon.stopShooting();
 
+    }
+    public void reload()
+    {
+        myWeapon.Reload();
     }
 }
