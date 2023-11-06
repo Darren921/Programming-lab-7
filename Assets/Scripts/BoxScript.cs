@@ -1,38 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class BoxScript : MonoBehaviour, IDamagable
 {
+    [SerializeField] private Player _player;
     [field: SerializeField] public float Health { get; set; }
     [SerializeField] private float speed;
-    private Rigidbody rb;
-    [SerializeField] private  WeaponBase weapon;
+     [SerializeField]private WeaponBase weapon ;
+     public bool AmmoboxDestroyed;
+     
 
-
+   
     private void Awake()
     {
-        
-        rb = GetComponent<Rigidbody>();
     }
-
     private void Update()
     {
-       
+
     }
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.transform.CompareTag("Bullet") && weapon.GetComponent<WeaponBase>().GetAmmo() == true)
-        {
-            Destroy(gameObject);
-        }
-    }
+  
     public void Die()
     {
-        if (Health < 0 && weapon.GetComponent<WeaponBase>().GetAmmo() == true)
-       Destroy(gameObject);
-    }
+        print(weapon.GetAmmo());
+        if (Health < 0)
+        {
+            AmmoboxDestroyed = true;
+            print("active");
+        }
+        if (Health < 0 &&  AmmoboxDestroyed == true && weapon.GetAmmo() ==true)
+        {
+            _player.currentWeapon.maxAmmo = _player.currentWeapon.AmmoRefillMax;
+            _player.currentWeapon.Ammo.text = "Ammo: " + _player.currentWeapon.ammoLeft.ToString() + " / " + _player.currentWeapon.maxAmmo.ToString();
+                    Destroy(gameObject);
 
-  
+                }
+
+            }
+        }
+
+
+
     
-}

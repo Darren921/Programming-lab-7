@@ -4,15 +4,23 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Projectile : MonoBehaviour
 {
-     private static WeaponBase Weapon;
+    private BoxScript _box = new BoxScript();
+    private WeaponBase weapon; 
     [SerializeField] private float damage;
     [SerializeField] private float shootForce;
     [SerializeField] private Rigidbody rb;
     private float trueDamage;
     public bool hittarget;
+
+    private void Awake()
+    {
+        weapon = GetComponent<WeaponBase>();
+    }
+
     public void Init(float chargePercent, Vector3 fireDirection)
     {
         rb.AddForce(shootForce * chargePercent * fireDirection, ForceMode.Impulse);
@@ -22,6 +30,7 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
+      
         print(other.transform.name + ", " + other.transform.root.name); 
         if(other.transform.root.TryGetComponent(out IDamagable hitTarget))
         {

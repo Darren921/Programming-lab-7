@@ -30,6 +30,10 @@ public static class InputManager
         {
             p.reload();
         };
+        _ctrls.InGame.WeaponSwap.performed += _ =>
+        {
+            p.weaponSwap();
+        };
     }
 
     public static void EnableInGame()
