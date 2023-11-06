@@ -37,7 +37,8 @@ public abstract class WeaponBase : MonoBehaviour
     [Header("Player UI")]
     [SerializeField] public TextMeshProUGUI Ammo;
     [SerializeField] public TextMeshProUGUI ReloadAlert;
-
+    public AudioSource Source;
+    public AudioClip clip;
     private void Start ()
     {
         _camera = Camera.main;
@@ -145,6 +146,7 @@ public abstract class WeaponBase : MonoBehaviour
                 var shape = smoke.shape;
                 smoke.Play();
                 ammoLeft--;
+                Source.PlayOneShot(clip);
                 Ammo.text = "Ammo: " + ammoLeft.ToString() + " / " + maxAmmo.ToString();
             }
             else
@@ -155,6 +157,10 @@ public abstract class WeaponBase : MonoBehaviour
                     var shape = smoke.shape;
                     shape.rotation = InputManager.GetCameraRay().direction  ;
                     smoke.Play();
+                    Source.PlayOneShot(clip);
+                    Source.PlayOneShot(clip);
+                    Source.PlayOneShot(clip);
+
                 }
                 Attack(percent);
                 ammoLeft--;

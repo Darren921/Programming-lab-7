@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] ProjectileWeapon _weapon1;
     [SerializeField] Shotgun _weapon2;
     [SerializeField] public BurstWeapon _weapon3;
+    
     public WeaponBase currentWeapon ;
     private bool weaponShootToggle;
     
