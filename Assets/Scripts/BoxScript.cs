@@ -30,9 +30,11 @@ public class BoxScript : MonoBehaviour, IDamagable
             AmmoboxDestroyed = true;
             print("active");
         }
+   
         if (Health < 0 &&  AmmoboxDestroyed == true && weapon.GetAmmo() ==true)
         {
             _player.currentWeapon.maxAmmo = _player.currentWeapon.AmmoRefillMax;
+            _player.currentWeapon.ammoLeft = _player.currentWeapon.magSize;
             _player.currentWeapon.Ammo.text = "Ammo: " + _player.currentWeapon.ammoLeft.ToString() + " / " + _player.currentWeapon.maxAmmo.ToString();
                     Destroy(gameObject);
 

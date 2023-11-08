@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -132,9 +132,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 101538413}
+  - component: {fileID: 101538415}
   - component: {fileID: 101538412}
   - component: {fileID: 101538414}
-  - component: {fileID: 101538415}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -213,7 +213,7 @@ MonoBehaviour:
   ReloadAlert: {fileID: 795971214}
   Source: {fileID: 963194232}
   clip: {fileID: 8300000, guid: 9c1fd5d66a2bbea41990a46ee29c5dba, type: 3}
-  myBullet: {fileID: -5662961461764598195, guid: 97235456de1b94c47b7be4b96f78d694, type: 3}
+  myBullet: {fileID: 3933647038496084099, guid: aa12267b065cff84dac8172e039b4caf, type: 3}
   spread: 0.08
 --- !u!114 &101538415
 MonoBehaviour:
@@ -242,7 +242,7 @@ MonoBehaviour:
   ReloadAlert: {fileID: 795971214}
   Source: {fileID: 963194232}
   clip: {fileID: 8300000, guid: a74949f5811e3fe4c9e73011f07622d6, type: 3}
-  myBullet: {fileID: -5662961461764598195, guid: 97235456de1b94c47b7be4b96f78d694, type: 3}
+  myBullet: {fileID: 3933647038496084099, guid: 5bf8d36e489a6e34f9bd036fca9ec82f, type: 3}
   spread: 0
 --- !u!1 &110031321
 GameObject:
@@ -896,7 +896,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.31, z: -7.42}
+  m_LocalPosition: {x: 1.15, y: 0.31, z: -7.42}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -917,7 +917,7 @@ MonoBehaviour:
   _weapon1: {fileID: 101538412}
   _weapon2: {fileID: 101538414}
   _weapon3: {fileID: 101538415}
-  currentWeapon: {fileID: 101538414}
+  currentWeapon: {fileID: 101538415}
 --- !u!199 &963194230
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -1073,7 +1073,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.75
+      scalar: 0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1930,7 +1930,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    m_BurstCount: 1
+    m_BurstCount: 2
     m_Bursts:
     - serializedVersion: 2
       time: 0.05
@@ -1989,6 +1989,64 @@ ParticleSystem:
           m_RotationOrder: 4
       cycleCount: 1
       repeatInterval: 0.01
+      probability: 1
+    - serializedVersion: 2
+      time: 0.05
+      countCurve:
+        serializedVersion: 2
+        minMaxState: 0
+        scalar: 30
+        minScalar: 30
+        maxCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        minCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+      cycleCount: 5
+      repeatInterval: 5
       probability: 1
   SizeModule:
     enabled: 1
@@ -6178,7 +6236,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: '
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

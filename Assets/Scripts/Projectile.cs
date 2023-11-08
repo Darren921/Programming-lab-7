@@ -8,8 +8,7 @@ using UnityEngine.UIElements;
 
 public class Projectile : MonoBehaviour
 {
-    private BoxScript _box = new BoxScript();
-    private WeaponBase weapon; 
+    private WeaponBase weapon;
     [SerializeField] private float damage;
     [SerializeField] private float shootForce;
     [SerializeField] private Rigidbody rb;

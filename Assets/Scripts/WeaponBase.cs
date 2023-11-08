@@ -155,7 +155,9 @@ public abstract class WeaponBase : MonoBehaviour
                 for (int i = 0; i <= 3; i++) 
                 {
                     var shape = smoke.shape;
-                    shape.rotation = InputManager.GetCameraRay().direction  ;
+                     shape.rotation = InputManager.GetCameraRay().direction  ;
+                    smoke.Play();
+                    smoke.Play();
                     smoke.Play();
                     Source.PlayOneShot(clip);
                     Source.PlayOneShot(clip);
