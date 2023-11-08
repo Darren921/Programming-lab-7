@@ -58,30 +58,8 @@
                 },
                 {
                     "name": "",
-                    "id": "5eb6a02a-39f5-4e49-ac2f-4e65d22805df",
+                    "id": "0a34d826-5966-4046-a589-9fceb9e7db5f",
                     "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "WeaponSwap",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ef2d8505-d541-4ab4-af99-a8722b26a900",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "WeaponSwap",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "097b8709-12bc-43c9-927e-e69d35cd8868",
-                    "path": "<Keyboard>/3",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

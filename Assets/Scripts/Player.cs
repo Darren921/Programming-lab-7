@@ -4,10 +4,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
 public class Player : MonoBehaviour
 {
+    static int counter;
     [SerializeField] ProjectileWeapon _weapon1;
     [SerializeField] Shotgun _weapon2;
     [SerializeField] public BurstWeapon _weapon3;
@@ -17,8 +20,8 @@ public class Player : MonoBehaviour
     
     private void Start()
     {
-
-        currentWeapon = _weapon3;
+        counter = 0;
+        currentWeapon = _weapon1;
         InputManager.Init(this);
         InputManager.EnableInGame();
     }
@@ -38,31 +41,36 @@ public class Player : MonoBehaviour
 
     public void weaponSwap()
     {
-        if (Keyboard.current.digit1Key.wasPressedThisFrame)
-        {
-            currentWeapon.Ammo.text = "Ammo: " + currentWeapon.ammoLeft.ToString() + " / " + currentWeapon.maxAmmo.ToString();
-            currentWeapon = _weapon2;
-            currentWeapon.Ammo.text = "Ammo: " + currentWeapon.ammoLeft.ToString() + " / " + currentWeapon.maxAmmo.ToString();
-        }
-           
+        print(counter);
 
-        if (Keyboard.current.digit2Key.wasPressedThisFrame)
+        if (counter == 0)
         {
-            currentWeapon.Ammo.text = "Ammo: " + currentWeapon.ammoLeft.ToString() + " / " + currentWeapon.maxAmmo.ToString();
+            print(counter);
+
             currentWeapon = _weapon1;
-            currentWeapon.Ammo.text = "Ammo: " + currentWeapon.ammoLeft.ToString() + " / " + currentWeapon.maxAmmo.ToString();
+            counter++;
+            return;
 
         }
-
-        if (Keyboard.current.digit3Key.wasPressedThisFrame)
+        if (counter == 1)
         {
-            currentWeapon.Ammo.text = "Ammo: " + currentWeapon.ammoLeft.ToString() + " / " + currentWeapon.maxAmmo.ToString();
-            currentWeapon = _weapon3;
-            currentWeapon.Ammo.text = "Ammo: " + currentWeapon.ammoLeft.ToString() + " / " + currentWeapon.maxAmmo.ToString();
+            print(counter);
+
+            currentWeapon = _weapon2;
+            counter++;
+            return;
 
         }
+        if (counter == 2)
+        {
+            print(counter);
 
+            currentWeapon = _weapon3;
+            counter = 0;
+            return;
 
+        }
     }
+
     }
 
