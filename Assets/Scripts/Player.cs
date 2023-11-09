@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
+using static UnityEditor.Experimental.GraphView.GraphView;
 using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
 public class Player : MonoBehaviour
@@ -46,27 +47,28 @@ public class Player : MonoBehaviour
         if (counter == 0)
         {
             print(counter);
-
             currentWeapon = _weapon1;
             counter++;
+            currentWeapon.Ammo.text = "Ammo: " + currentWeapon.ammoLeft.ToString() + " / " + currentWeapon.maxAmmo.ToString();
             return;
-
         }
         if (counter == 1)
         {
             print(counter);
-
             currentWeapon = _weapon2;
             counter++;
+            currentWeapon.Ammo.text = "Ammo: " + currentWeapon.ammoLeft.ToString() + " / " + currentWeapon.maxAmmo.ToString();
+
             return;
 
         }
         if (counter == 2)
         {
             print(counter);
-
             currentWeapon = _weapon3;
             counter = 0;
+            currentWeapon.Ammo.text = "Ammo: " + currentWeapon.ammoLeft.ToString() + " / " + currentWeapon.maxAmmo.ToString();
+
             return;
 
         }

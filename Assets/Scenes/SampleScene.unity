@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -132,8 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 101538413}
-  - component: {fileID: 101538415}
   - component: {fileID: 101538412}
+  - component: {fileID: 101538415}
   - component: {fileID: 101538414}
   m_Layer: 0
   m_Name: Weapon
@@ -201,7 +201,7 @@ MonoBehaviour:
   _Weapon: {fileID: 101538411}
   _player: {fileID: 963194229}
   _box: {fileID: 1272354615}
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 0.5
   chargeUpTime: 0
   minChargePercent: 0
   isFullAuto: 0
@@ -230,20 +230,20 @@ MonoBehaviour:
   _Weapon: {fileID: 101538411}
   _player: {fileID: 963194229}
   _box: {fileID: 1272354615}
-  timeBetweenAttacks: 3
+  timeBetweenAttacks: 2
   chargeUpTime: 0
   minChargePercent: 0
-  isFullAuto: 0
+  isFullAuto: 1
   magSize: 30
   maxAmmo: 120
-  AmmoRefillMax: 120
+  AmmoRefillMax: 100
   ammoLeft: 0
   Ammo: {fileID: 1768052207}
   ReloadAlert: {fileID: 795971214}
   Source: {fileID: 963194232}
   clip: {fileID: 8300000, guid: a74949f5811e3fe4c9e73011f07622d6, type: 3}
   myBullet: {fileID: 3933647038496084099, guid: 5bf8d36e489a6e34f9bd036fca9ec82f, type: 3}
-  spread: 0
+  spread: 0.24
 --- !u!1 &110031321
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,7 +761,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 53a8a6ddf7da0f843a93a09ed67f4e42, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -917,7 +917,7 @@ MonoBehaviour:
   _weapon1: {fileID: 101538412}
   _weapon2: {fileID: 101538414}
   _weapon3: {fileID: 101538415}
-  currentWeapon: {fileID: 101538415}
+  currentWeapon: {fileID: 101538412}
 --- !u!199 &963194230
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -5841,7 +5841,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.499
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -50,42 +50,7 @@ public abstract class WeaponBase : MonoBehaviour
         
 
     }
-  
-
-    public  void Reload()
-    {
-        if (HasAmmo == true && maxAmmo >= 0)
-        {
-            if (ammoLeft == 0)
-            {
-                maxAmmo -= magSize + ammoLeft;
-                ammoLeft = magSize;
-                HasAmmo = true;
-                Ammo.text = "Ammo: " + ammoLeft.ToString() + " / " + maxAmmo.ToString();
-                ReloadAlert.text = "";
-            }
-            if (maxAmmo >= (magSize - ammoLeft))
-            {
-                maxAmmo = (maxAmmo - magSize) + ammoLeft;
-                ammoLeft = magSize;
-                HasAmmo = true;
-                Ammo.text = "Ammo: " + ammoLeft.ToString() + " / " + maxAmmo.ToString();
-                ReloadAlert.text = "";
-            }
-            if (maxAmmo <= (magSize - ammoLeft))
-            {
-                HasAmmo = false;
-                ammoLeft += maxAmmo;
-                maxAmmo = 0;
-                Ammo.text = "Ammo: " + ammoLeft.ToString() + " / " + maxAmmo.ToString();
-                ReloadAlert.text = "";
-            }
-
-
-        }
-    }
-   
-
+ 
 
     // Start is called before the first frame update
     public void startShooting()
@@ -121,19 +86,7 @@ public abstract class WeaponBase : MonoBehaviour
         yield return null;
     }
 
-    public bool GetAmmo()
-    {
-        if (_player.currentWeapon.maxAmmo < _player.currentWeapon.AmmoRefillMax)
-        {
-            print("acitve");
-            return true;
-        }
-        else
-        {
-            print("acitvef");
-            return false;
-        }
-    }
+   
     private void TryAttack(float percent)
     {
         _currentChargeTime = 0;
@@ -194,9 +147,54 @@ public abstract class WeaponBase : MonoBehaviour
         if (isFullAuto && percent >= 1) _currentFireTimer = StartCoroutine(ReFireTimer());
 
         }
+    public void Reload()
+    {
+        if (HasAmmo == true && maxAmmo >= 0)
+        {
+            if (ammoLeft == 0)
+            {
+                maxAmmo -= magSize + ammoLeft;
+                ammoLeft = magSize;
+                HasAmmo = true;
+                Ammo.text = "Ammo: " + ammoLeft.ToString() + " / " + maxAmmo.ToString();
+                ReloadAlert.text = "";
+            }
+            if (maxAmmo >= (magSize - ammoLeft))
+            {
+                maxAmmo = (maxAmmo - magSize) + ammoLeft;
+                ammoLeft = magSize;
+                HasAmmo = true;
+                Ammo.text = "Ammo: " + ammoLeft.ToString() + " / " + maxAmmo.ToString();
+                ReloadAlert.text = "";
+            }
+            if (maxAmmo <= (magSize - ammoLeft))
+            {
+                HasAmmo = false;
+                ammoLeft += maxAmmo;
+                maxAmmo = 0;
+                Ammo.text = "Ammo: " + ammoLeft.ToString() + " / " + maxAmmo.ToString();
+                ReloadAlert.text = "";
+            }
 
-    
 
+        }
+    }
+
+
+
+    public bool GetAmmo()
+    {
+        if (_player.currentWeapon.maxAmmo < _player.currentWeapon.AmmoRefillMax)
+        {
+            print("acitve");
+            return true;
+        }
+        else
+        {
+            print("acitvef");
+            return false;
+        }
+    }
 
     protected virtual bool CanAttack(float percent)
     {
