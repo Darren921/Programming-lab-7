@@ -10,22 +10,17 @@ using static UnityEngine.ParticleSystem;
 
 public abstract class WeaponBase : MonoBehaviour
 {
-  
-        
+
+    [SerializeField] private WeaponSO weaponStats;   
     [Header("Other Classes")]
     private static Camera _camera;
     [SerializeField] private  GameObject _Weapon;
     [SerializeField] private Player _player; 
    [SerializeField] private  BoxScript _box ;
     private  Projectile projectile;
-    [Header("Weapon Base Stats ")]
-    [SerializeField] protected float timeBetweenAttacks;
-    [SerializeField] protected float chargeUpTime;
-    [SerializeField, Range(0,1)] protected float minChargePercent;
-    [SerializeField] private bool isFullAuto;
+  
     private Coroutine _currentFireTimer;
     private bool _isOnCooldown;
-    private WaitForSeconds _coolDownWait;
     private WaitUntil _coolDownEnforce;
     private float _currentChargeTime;
     [Header("Ammo Stats ")]
@@ -45,7 +40,6 @@ public abstract class WeaponBase : MonoBehaviour
         ammoLeft = magSize;
         _player.currentWeapon.Ammo.text = "Ammo: " + _player.currentWeapon.ammoLeft.ToString() + " / " + _player.currentWeapon.maxAmmo.ToString();
         HasAmmo = true;
-        _coolDownWait = new WaitForSeconds(timeBetweenAttacks);
         _coolDownEnforce = new WaitUntil(() => !_isOnCooldown);
         
 
@@ -60,7 +54,7 @@ public abstract class WeaponBase : MonoBehaviour
     public void stopShooting() 
     { 
         StopCoroutine(_currentFireTimer);
-        float percent = _currentChargeTime / chargeUpTime;
+        float percent = _currentChargeTime / weaponStats.ChargeUpTime;
         if (percent != 0) TryAttack(percent);
     }
 
@@ -68,7 +62,7 @@ public abstract class WeaponBase : MonoBehaviour
     private IEnumerator CooldownTimer()
     {
         _isOnCooldown = true;
-        yield return _coolDownWait;
+        yield return weaponStats._coolDownWait;
         _isOnCooldown = false;
     }
     private IEnumerator ReFireTimer()
@@ -77,7 +71,7 @@ public abstract class WeaponBase : MonoBehaviour
         yield return _coolDownEnforce;
         print("Post coolDown");
 
-        while (_currentChargeTime < chargeUpTime)
+        while (_currentChargeTime < weaponStats.ChargeUpTime)
         {
             _currentChargeTime += Time.deltaTime;
             yield return null;
@@ -144,7 +138,7 @@ public abstract class WeaponBase : MonoBehaviour
         }
   
         StartCoroutine(CooldownTimer());   
-        if (isFullAuto && percent >= 1) _currentFireTimer = StartCoroutine(ReFireTimer());
+        if (weaponStats.IsFullAuto && percent >= 1) _currentFireTimer = StartCoroutine(ReFireTimer());
 
         }
     public void Reload()
@@ -198,7 +192,7 @@ public abstract class WeaponBase : MonoBehaviour
 
     protected virtual bool CanAttack(float percent)
     {
-        return !_isOnCooldown && percent >= minChargePercent;
+        return !_isOnCooldown && percent >= weaponStats.MinChargePercent;
     }
     protected abstract void Attack(float percent);
 

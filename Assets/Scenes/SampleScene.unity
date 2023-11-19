@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -154,13 +154,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403c04b75e2301f4ebe7ae8e76ad40d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponStats: {fileID: 11400000, guid: cbe88469cf971a44b8b90995a756460e, type: 2}
   _Weapon: {fileID: 101538411}
   _player: {fileID: 963194229}
   _box: {fileID: 1272354615}
-  timeBetweenAttacks: 0.2
-  chargeUpTime: 1
-  minChargePercent: 0
-  isFullAuto: 1
   magSize: 12
   maxAmmo: 60
   AmmoRefillMax: 60
@@ -198,13 +195,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf01974c786d5bc459bca006d95dc923, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponStats: {fileID: 11400000, guid: 369ac874157b44b44a75db237858d7ce, type: 2}
   _Weapon: {fileID: 101538411}
   _player: {fileID: 963194229}
   _box: {fileID: 1272354615}
-  timeBetweenAttacks: 0.5
-  chargeUpTime: 0
-  minChargePercent: 0
-  isFullAuto: 0
   magSize: 5
   maxAmmo: 30
   AmmoRefillMax: 30
@@ -227,13 +221,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6435cc2c65706a4194fe93b01403d3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponStats: {fileID: 11400000, guid: a9161e3c17512764bbefcef6d4b8d48d, type: 2}
   _Weapon: {fileID: 101538411}
   _player: {fileID: 963194229}
   _box: {fileID: 1272354615}
-  timeBetweenAttacks: 2
-  chargeUpTime: 0
-  minChargePercent: 0
-  isFullAuto: 1
   magSize: 30
   maxAmmo: 120
   AmmoRefillMax: 100

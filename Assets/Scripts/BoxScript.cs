@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
-public class BoxScript : MonoBehaviour, IDamagable
+public class BoxScript : MonoBehaviour, IDamagable 
 {
     [SerializeField] private Player _player;
     [field: SerializeField] public float Health { get; set; }
