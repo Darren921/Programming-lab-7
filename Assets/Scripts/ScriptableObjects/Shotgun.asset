@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeBetweenAttacks: 0.2
   <ChargeUpTime>k__BackingField: 0
-  <MinChargePercent>k__BackingField: 0
+  <MinChargePercent>k__BackingField: 0.2
   <IsFullAuto>k__BackingField: 0

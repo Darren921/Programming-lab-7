@@ -5,23 +5,23 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using static Projectile;
 using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 using static UnityEditor.Experimental.GraphView.GraphView;
 using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
 
 public class Player : MonoBehaviour
 {
-    static int counter;
+    static int counterW;
     [SerializeField] ProjectileWeapon _weapon1;
     [SerializeField] Shotgun _weapon2;
     [SerializeField] public BurstWeapon _weapon3;
-    
+    private Projectile Projectile = new();
     public WeaponBase currentWeapon ;
     private bool weaponShootToggle;
-    
     private void Start()
     {
-        counter = 0;
+        counterW = 0;
         currentWeapon = _weapon1;
         InputManager.Init(this);
         InputManager.EnableInGame();
@@ -42,37 +42,39 @@ public class Player : MonoBehaviour
 
     public void weaponSwap()
     {
-        print(counter);
+        counterW++;
+        print(counterW);
 
-        if (counter == 0)
+        if (counterW == 0)
         {
-            print(counter);
+            print(counterW);
             currentWeapon = _weapon1;
-            counter++;
+           
             currentWeapon.Ammo.text = "Ammo: " + currentWeapon.ammoLeft.ToString() + " / " + currentWeapon.maxAmmo.ToString();
             return;
         }
-        if (counter == 1)
+        if (counterW == 1)
         {
-            print(counter);
+            print(counterW);
             currentWeapon = _weapon2;
-            counter++;
+           
             currentWeapon.Ammo.text = "Ammo: " + currentWeapon.ammoLeft.ToString() + " / " + currentWeapon.maxAmmo.ToString();
 
             return;
 
         }
-        if (counter == 2)
+        if (counterW == 2)
         {
-            print(counter);
+            print(counterW);
             currentWeapon = _weapon3;
-            counter = 0;
+            counterW -=  3;
             currentWeapon.Ammo.text = "Ammo: " + currentWeapon.ammoLeft.ToString() + " / " + currentWeapon.maxAmmo.ToString();
 
             return;
 
         }
     }
+   
 
     }
 

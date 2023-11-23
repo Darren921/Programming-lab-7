@@ -34,6 +34,8 @@ public static class InputManager
         {
             p.weaponSwap();
         };
+       
+       
     }
 
     public static void EnableInGame()

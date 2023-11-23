@@ -53,6 +53,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""AmmoSwap"",
+                    ""type"": ""Button"",
+                    ""id"": ""7ddf6831-c12f-433b-af22-944b9ebcf842"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -86,6 +95,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""WeaponSwap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7a6a9141-3fb4-48ee-a80e-cea70b4ef544"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AmmoSwap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -127,6 +147,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_InGame_Shoot = m_InGame.FindAction("Shoot", throwIfNotFound: true);
         m_InGame_Reload = m_InGame.FindAction("Reload", throwIfNotFound: true);
         m_InGame_WeaponSwap = m_InGame.FindAction("WeaponSwap", throwIfNotFound: true);
+        m_InGame_AmmoSwap = m_InGame.FindAction("AmmoSwap", throwIfNotFound: true);
         // Permenanet
         m_Permenanet = asset.FindActionMap("Permenanet", throwIfNotFound: true);
         m_Permenanet_MousePos = m_Permenanet.FindAction("MousePos", throwIfNotFound: true);
@@ -194,6 +215,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_InGame_Shoot;
     private readonly InputAction m_InGame_Reload;
     private readonly InputAction m_InGame_WeaponSwap;
+    private readonly InputAction m_InGame_AmmoSwap;
     public struct InGameActions
     {
         private @Controls m_Wrapper;
@@ -201,6 +223,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Shoot => m_Wrapper.m_InGame_Shoot;
         public InputAction @Reload => m_Wrapper.m_InGame_Reload;
         public InputAction @WeaponSwap => m_Wrapper.m_InGame_WeaponSwap;
+        public InputAction @AmmoSwap => m_Wrapper.m_InGame_AmmoSwap;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -219,6 +242,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @WeaponSwap.started += instance.OnWeaponSwap;
             @WeaponSwap.performed += instance.OnWeaponSwap;
             @WeaponSwap.canceled += instance.OnWeaponSwap;
+            @AmmoSwap.started += instance.OnAmmoSwap;
+            @AmmoSwap.performed += instance.OnAmmoSwap;
+            @AmmoSwap.canceled += instance.OnAmmoSwap;
         }
 
         private void UnregisterCallbacks(IInGameActions instance)
@@ -232,6 +258,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @WeaponSwap.started -= instance.OnWeaponSwap;
             @WeaponSwap.performed -= instance.OnWeaponSwap;
             @WeaponSwap.canceled -= instance.OnWeaponSwap;
+            @AmmoSwap.started -= instance.OnAmmoSwap;
+            @AmmoSwap.performed -= instance.OnAmmoSwap;
+            @AmmoSwap.canceled -= instance.OnAmmoSwap;
         }
 
         public void RemoveCallbacks(IInGameActions instance)
@@ -300,6 +329,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnWeaponSwap(InputAction.CallbackContext context);
+        void OnAmmoSwap(InputAction.CallbackContext context);
     }
     public interface IPermenanetActions
     {

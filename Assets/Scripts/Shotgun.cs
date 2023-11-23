@@ -16,7 +16,7 @@ public class Shotgun : WeaponBase
             Vector3 dir = camRay.direction + new Vector3(Random.Range(-spread, spread), Random.Range(-spread, spread), Random.Range(-spread, spread));
             Projectile rb = Instantiate(myBullet, camRay.origin, transform.rotation);
             rb.Init(percent, dir );
-            Destroy(rb.gameObject, 3);
+            Destroy(rb.gameObject, 5    );
         }
     }
 

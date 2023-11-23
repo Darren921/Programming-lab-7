@@ -17,7 +17,6 @@ public abstract class WeaponBase : MonoBehaviour
     [SerializeField] private  GameObject _Weapon;
     [SerializeField] private Player _player; 
    [SerializeField] private  BoxScript _box ;
-    private  Projectile projectile;
   
     private Coroutine _currentFireTimer;
     private bool _isOnCooldown;
